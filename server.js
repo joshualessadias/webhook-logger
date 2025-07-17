@@ -9,12 +9,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Catch-all route to log all incoming webhook requests
 app.all('/*"*"', (req, res) => {
-  console.log('📬 Webhook received!');
+  console.log(`📬 [ ${new Date()} ] Webhook received!`);
+  console.log()
   console.log('🔗 URL:', req.originalUrl);
-  console.log('🔖 Method:', req.method);
-  console.log('📩 Headers:', req.headers);
-  console.log('🧾 Body:', JSON.stringify(req.body));
+  console.log('==> Method:', req.method);
+  console.log('==> Headers:', req.headers);
+  console.log('==> Body:', JSON.stringify(req.body));
+  console.log()
   console.log('-----------------------------');
+  console.log()
   res.sendStatus(200); // Respond OK
 });
 
